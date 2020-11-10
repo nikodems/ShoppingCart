@@ -15,7 +15,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.price %></td>
+        <td> £ <%= product.price %></td>
         <td><%= link_to 'Show', store_path(product) %></td>
 		
 		
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to "#{current_order.order_items.size} items with a value of#{current_order.subtotal}", carts_path%>
+<%= link_to "#{current_order.order_items.size} items worth £#{current_order.subtotal}", carts_path%>

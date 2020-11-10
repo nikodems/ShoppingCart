@@ -21,8 +21,12 @@ class OrderItemsController < ApplicationController
 		@order_item.destroy
 		@order_items = current_order.order_items
 		redirect_to root_path
+
 	end
 	
+	def destroy_all
+		redirect_to root_path
+	end
 	private
 	#Specify which fields are allowed to be created
 	def order_params

@@ -4,6 +4,7 @@
 
 <% @order_items.each do |item| %>
 	<%= item.product.name %>	
+	<b>£<b/>
 	<%= item.product.price %>
 	
 	
@@ -15,6 +16,15 @@
 		<%= link_to "Remove item", order_item_path(item), method: :delete, remote:true%>
 	<% end %>
 	
-	<h2>Subtotal: <%= item.calculate_total_price %></h2>
+	<h4>Subtotal £: <%= item.calculate_total_price %></h4>
 
 <% end %>
+
+<h2>Total £ <%= current_order.subtotal%></h2>
+
+<%= link_to "Return to shopping", root_path %>
+
+
+
+
+
