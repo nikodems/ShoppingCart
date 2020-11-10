@@ -16,7 +16,11 @@ class OrderItem < ApplicationRecord
 	end
 	
 	def calculate_total_price
-		price * quantity
+		if price.nil? | quantity.nil?
+			return 0.0
+		else
+			price*quantity
+		end
 	end
 	
 	private
@@ -26,6 +30,10 @@ class OrderItem < ApplicationRecord
 	end
 	
 	def set_total_price
-		self[:total_price] = total_price * quantity
+		if persisted?
+			self[:total_price] = total_price*quantity
+		else
+			self[:total_price] = 0
+		end
 	end
 end

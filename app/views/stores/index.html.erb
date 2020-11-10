@@ -37,4 +37,4 @@
 
 <br>
 
-<%= link_to "#{current_order.order_items.size} items with a value of$", carts_path%>
+<%= link_to "#{current_order.order_items.size} items with a value of#{current_order.subtotal}", carts_path%>
