@@ -1,0 +1,31 @@
+<h1>Carts#show</h1>
+<p>Find me in app/views/carts/show.html.erb</p>
+
+
+<% @order_items.each do |item| %>
+	<%= item.product.name %>	
+	<b>£<b/>
+	<%= item.product.price %>
+	
+	
+	<%= form_for item, remote:true do |f| %>
+		<%= f.hidden_field :product_id, :value => item.product.id%>
+		<%= f.number_field :quantity, :value => item.quantity.to_i %>
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		<%= f.submit "Update Cart"%>
+		
+		<%= link_to "Remove item", order_item_path(item), method: :delete, remote:true%>
+	<% end %>
+	
+	<h4>Subtotal £: <%= item.calculate_total_price %></h4>
+
+<% end %>
+
+<h2>Total £ <%= current_order.subtotal%></h2>
+
+<%= link_to "Return to shopping", root_path %>
+
+
+
+
+
